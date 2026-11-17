@@ -1,0 +1,2092 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#4F46E5" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Latihan ASAS Bahasa Inggris SMA</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#EEF2FF',
+              100: '#E0E7FF',
+              200: '#C7D2FE',
+              500: '#6366F1',
+              600: '#4F46E5',
+              700: '#4338CA',
+              800: '#3730A3',
+              900: '#312E81',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Safe area utilities untuk layar iPhone berponi / Dynamic Island & Android gesture bar */
+    .safe-top {
+      padding-top: max(0.75rem, env(safe-area-inset-top));
+    }
+    .safe-bottom {
+      padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+    }
+    .safe-pb-extra {
+      padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+    }
+
+    /* Mencegah seleksi teks tidak sengaja pada tombol navigasi saat tap cepat di layar sentuh */
+    .no-select {
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+    }
+
+    /* Custom scrollbar yang rapi untuk kotak teks bacaan */
+    .reading-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+    .reading-scroll::-webkit-scrollbar-track {
+      background: #F1F5F9;
+      border-radius: 9999px;
+    }
+    .reading-scroll::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+    .reading-scroll::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+
+    /* Animasi transisi halus */
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-fade-up {
+      animation: fadeSlideUp 0.28s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-[100dvh] flex flex-col selection:bg-brand-100 selection:text-brand-900">
+
+  <!-- ===================================================================== -->
+  <!-- 1. HALAMAN LOGIN SISWA                                                -->
+  <!-- ===================================================================== -->
+  <main id="screen-login" class="flex-1 flex items-center justify-center p-4 sm:p-6 safe-top safe-bottom">
+    <div class="w-full max-w-md bg-white rounded-3xl shadow-xl shadow-slate-200/70 border border-slate-100 overflow-hidden animate-fade-up">
+      <!-- Header Card -->
+      <div class="bg-gradient-to-br from-brand-600 via-brand-700 to-indigo-800 px-6 py-8 text-white relative overflow-hidden">
+        <div class="absolute -right-8 -top-8 w-36 h-36 rounded-full bg-white/10 blur-xl pointer-events-none"></div>
+        <div class="absolute -left-6 -bottom-10 w-28 h-28 rounded-full bg-indigo-400/20 blur-lg pointer-events-none"></div>
+
+        <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/20 px-3 py-1 rounded-full text-xs font-semibold tracking-wide mb-4">
+          <svg class="w-4 h-4 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+          <span>MATA PELAJARAN BAHASA INGGRIS SMA</span>
+        </div>
+
+        <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight leading-snug">
+          Latihan ASAS Bahasa Inggris SMA
+        </h1>
+        <p class="text-indigo-100 text-sm mt-2 leading-relaxed">
+          Asesmen Sumatif Akhir Semester &bull; Analytical Exposition &amp; Fantasy Story Text
+        </p>
+      </div>
+
+      <!-- Form Login -->
+      <form id="login-form" class="p-6 sm:p-8 space-y-5" novalidate>
+        <!-- Banner Pesan Error Validasi -->
+        <div id="login-error" class="hidden rounded-2xl bg-rose-50 border border-rose-200 p-3.5 text-sm text-rose-700 flex items-start gap-2.5">
+          <svg class="w-5 h-5 text-rose-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span id="login-error-text">Mohon lengkapi seluruh data identitas siswa terlebih dahulu.</span>
+        </div>
+
+        <div>
+          <label for="input-nama" class="block text-sm font-semibold text-slate-700 mb-1.5">
+            Nama Lengkap <span class="text-rose-500">*</span>
+          </label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400 pointer-events-none">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </span>
+            <input
+              type="text"
+              id="input-nama"
+              name="nama"
+              autocomplete="name"
+              placeholder="Masukkan nama lengkap sesuai absen"
+              class="w-full min-h-[48px] pl-11 pr-4 py-3 rounded-2xl border border-slate-200 bg-slate-50/70 text-slate-900 placeholder-slate-400 text-base focus:outline-none focus:bg-white focus:border-brand-600 focus:ring-4 focus:ring-brand-500/15 transition"
+              required
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="input-nis" class="block text-sm font-semibold text-slate-700 mb-1.5">
+            NIS (Nomor Induk Siswa) <span class="text-rose-500">*</span>
+          </label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400 pointer-events-none">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+              </svg>
+            </span>
+            <input
+              type="text"
+              inputmode="numeric"
+              id="input-nis"
+              name="nis"
+              placeholder="Contoh: 232410085"
+              class="w-full min-h-[48px] pl-11 pr-4 py-3 rounded-2xl border border-slate-200 bg-slate-50/70 text-slate-900 placeholder-slate-400 text-base focus:outline-none focus:bg-white focus:border-brand-600 focus:ring-4 focus:ring-brand-500/15 transition"
+              required
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="input-kelas" class="block text-sm font-semibold text-slate-700 mb-1.5">
+            Kelas <span class="text-rose-500">*</span>
+          </label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400 pointer-events-none">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+            </span>
+            <input
+              type="text"
+              id="input-kelas"
+              name="kelas"
+              list="kelas-suggestions"
+              placeholder="Contoh: XI-A / XI-1 / XI MIPA 2"
+              class="w-full min-h-[48px] pl-11 pr-4 py-3 rounded-2xl border border-slate-200 bg-slate-50/70 text-slate-900 placeholder-slate-400 text-base focus:outline-none focus:bg-white focus:border-brand-600 focus:ring-4 focus:ring-brand-500/15 transition"
+              required
+            />
+            <datalist id="kelas-suggestions">
+              <option value="XI-1"></option>
+              <option value="XI-2"></option>
+              <option value="XI-3"></option>
+              <option value="XI-4"></option>
+              <option value="XI-A"></option>
+              <option value="XI-B"></option>
+              <option value="XI-C"></option>
+              <option value="XI MIPA 1"></option>
+              <option value="XI IPS 1"></option>
+            </datalist>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full min-h-[52px] mt-2 bg-brand-600 hover:bg-brand-700 active:scale-[0.99] text-white font-bold text-base rounded-2xl shadow-lg shadow-brand-600/25 flex items-center justify-center gap-2 transition cursor-pointer"
+        >
+          <span>Lanjut ke Instruksi Tes</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </button>
+
+        <p class="text-center text-xs text-slate-400 pt-1">
+          Kompatibel dengan Android, iPhone (iOS), Tablet, &amp; Laptop
+        </p>
+      </form>
+    </div>
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- 2. HALAMAN TEST INSTRUCTION (INSTRUKSI & ATURAN TES)                  -->
+  <!-- ===================================================================== -->
+  <section id="screen-instructions" class="hidden flex-1 py-6 px-4 sm:px-6 safe-top safe-bottom">
+    <div class="max-w-3xl mx-auto bg-white rounded-3xl shadow-xl shadow-slate-200/70 border border-slate-100 overflow-hidden animate-fade-up">
+      <!-- Top Header -->
+      <div class="bg-slate-900 text-white px-6 py-6 sm:px-8">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-indigo-300 bg-indigo-500/20 px-3 py-1 rounded-full mb-2">
+              Test Instruction &amp; Exam Rules
+            </span>
+            <h2 class="text-xl sm:text-2xl font-extrabold">Petunjuk &amp; Tata Tertib Latihan ASAS</h2>
+          </div>
+          <button
+            type="button"
+            id="btn-back-login"
+            class="text-xs sm:text-sm font-medium text-slate-300 hover:text-white bg-white/10 hover:bg-white/15 px-3.5 py-2 rounded-xl transition cursor-pointer"
+          >
+            Ubah Data Siswa
+          </button>
+        </div>
+
+        <!-- Kartu Identitas Peserta -->
+        <div class="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-3 bg-white/10 border border-white/10 rounded-2xl p-4 text-sm">
+          <div>
+            <span class="block text-slate-400 text-xs">Nama Peserta</span>
+            <span id="inst-nama" class="font-bold text-white truncate block mt-0.5">-</span>
+          </div>
+          <div>
+            <span class="block text-slate-400 text-xs">NIS</span>
+            <span id="inst-nis" class="font-bold text-white truncate block mt-0.5">-</span>
+          </div>
+          <div>
+            <span class="block text-slate-400 text-xs">Kelas</span>
+            <span id="inst-kelas" class="font-bold text-white truncate block mt-0.5">-</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Body Instruksi -->
+      <div class="p-6 sm:p-8 space-y-6">
+        <!-- Ringkasan Format Ujian -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div class="bg-indigo-50/80 border border-indigo-100 rounded-2xl p-3.5 text-center">
+            <span class="block text-xs font-medium text-indigo-600">Jumlah Soal</span>
+            <span class="block text-lg sm:text-xl font-extrabold text-indigo-950 mt-0.5">20 Soal</span>
+          </div>
+          <div class="bg-indigo-50/80 border border-indigo-100 rounded-2xl p-3.5 text-center">
+            <span class="block text-xs font-medium text-indigo-600">Tipe Pilihan</span>
+            <span class="block text-lg sm:text-xl font-extrabold text-indigo-950 mt-0.5">5 Opsi (A&ndash;E)</span>
+          </div>
+          <div class="bg-indigo-50/80 border border-indigo-100 rounded-2xl p-3.5 text-center">
+            <span class="block text-xs font-medium text-indigo-600">Durasi Waktu</span>
+            <span class="block text-lg sm:text-xl font-extrabold text-indigo-950 mt-0.5">45 Menit</span>
+          </div>
+          <div class="bg-indigo-50/80 border border-indigo-100 rounded-2xl p-3.5 text-center">
+            <span class="block text-xs font-medium text-indigo-600">Skor Maksimal</span>
+            <span class="block text-lg sm:text-xl font-extrabold text-indigo-950 mt-0.5">100 Poin</span>
+          </div>
+        </div>
+
+        <!-- Cakupan Materi -->
+        <div class="space-y-3">
+          <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+            <span class="w-7 h-7 rounded-xl bg-brand-100 text-brand-700 inline-flex items-center justify-center text-sm font-extrabold">1</span>
+            Cakupan Materi Ujian
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+            <div class="rounded-2xl border border-slate-200 p-4 bg-slate-50/60">
+              <div class="font-bold text-brand-700">Lesson 1: Analytical Exposition Text</div>
+              <p class="text-slate-600 mt-1 leading-relaxed">
+                Nomor <strong>1 &ndash; 10</strong> (terdiri dari 2 teks bacaan argumentatif beserta pemahaman ide pokok, informasi rinci, struktur teks <em>Thesis&ndash;Arguments&ndash;Reiteration</em>, dan kebahasaan).
+              </p>
+            </div>
+            <div class="rounded-2xl border border-slate-200 p-4 bg-slate-50/60">
+              <div class="font-bold text-purple-700">Lesson 2: Fantasy Story Text</div>
+              <p class="text-slate-600 mt-1 leading-relaxed">
+                Nomor <strong>11 &ndash; 20</strong> (terdiri dari 2 teks cerita fantasi imajinatif beserta pemahaman alur <em>Orientation&ndash;Complication&ndash;Resolution</em>, rujukan kata, kosakata, dan pesan moral).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Petunjuk Pengerjaan -->
+        <div class="space-y-2.5">
+          <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+            <span class="w-7 h-7 rounded-xl bg-brand-100 text-brand-700 inline-flex items-center justify-center text-sm font-extrabold">2</span>
+            Petunjuk Teknis Pengerjaan
+          </h3>
+          <ul class="space-y-2 text-sm text-slate-600 pl-2">
+            <li class="flex items-start gap-2.5">
+              <span class="text-brand-600 font-bold mt-0.5">&bull;</span>
+              <span>Bacalah setiap <strong>Reading Text</strong> yang tersedia di atas soal dengan cermat sebelum memilih satu jawaban paling tepat dari opsi <strong>A, B, C, D, atau E</strong>.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-brand-600 font-bold mt-0.5">&bull;</span>
+              <span>Gunakan fitur <strong>Question Navigator</strong> untuk melompat ke nomor soal tertentu atau menandai soal yang masih <strong>Ragu-ragu</strong> (warna kuning).</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-brand-600 font-bold mt-0.5">&bull;</span>
+              <span>Jika waktu 45 menit berakhir, sistem akan otomatis menyimpan dan mengirimkan jawaban Anda.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Peringatan Aturan Ketat & Cheating Detector -->
+        <div class="rounded-2xl bg-rose-50 border border-rose-200 p-4 sm:p-5 space-y-2.5">
+          <div class="flex items-center gap-2 text-rose-800 font-extrabold text-sm sm:text-base">
+            <svg class="w-5 h-5 text-rose-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            <span>Aturan Ketat &amp; Sistem Anti-Kecurangan (Cheating Detector)</span>
+          </div>
+          <ul class="space-y-1.5 text-xs sm:text-sm text-rose-900/90 leading-relaxed">
+            <li>1. Ujian wajib dilaksanakan dalam <strong>Mode Layar Penuh (Fullscreen)</strong>.</li>
+            <li>2. Selama ujian berlangsung, Anda <strong>DILARANG</strong> keluar dari mode layar penuh, membuka tab baru, berpindah ke aplikasi lain (WhatsApp, Google, dll.), atau menggunakan mode layar terpisah (<em>split screen</em>).</li>
+            <li>3. Setiap pelanggaran akan tercatat otomatis oleh sistem. <strong>Jika pelanggaran mencapai 3 kali (3x), ujian akan otomatis dihentikan dan dikumpulkan (auto-submit).</strong></li>
+          </ul>
+        </div>
+
+        <!-- Persetujuan & Tombol Mulai -->
+        <div class="pt-2 border-t border-slate-100 space-y-4">
+          <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 hover:bg-slate-100/80 border border-slate-200 cursor-pointer transition no-select">
+            <input
+              type="checkbox"
+              id="checkbox-agree"
+              class="w-5 h-5 mt-0.5 rounded border-slate-300 text-brand-600 focus:ring-brand-500 cursor-pointer shrink-0"
+            />
+            <span class="text-xs sm:text-sm font-medium text-slate-700 leading-snug">
+              Saya telah membaca dengan teliti, memahami seluruh instruksi pengerjaan, dan bersedia mematuhi aturan mode layar penuh selama ujian berlangsung.
+            </span>
+          </label>
+
+          <div id="agree-error" class="hidden text-xs sm:text-sm text-rose-600 font-medium px-1">
+            &#9888;&#65039; Silakan centang kotak persetujuan di atas sebelum memulai ujian.
+          </div>
+
+          <button
+            type="button"
+            id="btn-start-exam"
+            class="w-full min-h-[54px] bg-brand-600 hover:bg-brand-700 active:scale-[0.99] text-white font-bold text-base rounded-2xl shadow-lg shadow-brand-600/25 flex items-center justify-center gap-2.5 transition cursor-pointer"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Mulai Ujian Sekarang</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 3. HALAMAN RUANG UJIAN & QUESTION NAVIGATOR                           -->
+  <!-- ===================================================================== -->
+  <section id="screen-exam" class="hidden flex-1 flex flex-col min-h-screen">
+    <!-- Sticky Top Bar -->
+    <header class="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs safe-top">
+      <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 flex items-center justify-between gap-2">
+        <!-- Info Siswa & Lesson -->
+        <div class="min-w-0 flex-1">
+          <div class="flex items-center gap-2">
+            <span id="exam-lesson-badge" class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[11px] sm:text-xs font-bold bg-brand-100 text-brand-700 truncate">
+              Lesson 1: Analytical Exposition
+            </span>
+          </div>
+          <p id="exam-student-info" class="text-xs text-slate-500 truncate mt-0.5 font-medium">
+            Siswa &bull; Kelas
+          </p>
+        </div>
+
+        <!-- Status Pelanggaran & Timer -->
+        <div class="flex items-center gap-2 shrink-0">
+          <!-- Indikator Pelanggaran -->
+          <div
+            id="violation-badge"
+            class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 text-xs font-bold"
+            title="Jumlah pelanggaran terdeteksi"
+          >
+            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            <span id="violation-counter-text">0/3</span>
+          </div>
+
+          <!-- Timer Mundur -->
+          <div
+            id="timer-box"
+            class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-brand-50 border border-brand-200 text-brand-700 font-mono text-sm sm:text-base font-extrabold"
+          >
+            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span id="timer-display">45:00</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <div class="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-4 sm:py-6 safe-pb-extra lg:pb-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+
+        <!-- Kolom Utama: Reading Passage + Soal + Opsi (8 kolom di Desktop) -->
+        <div class="lg:col-span-8 space-y-4 sm:space-y-5">
+
+          <!-- Kotak Reading Text (Selalu tampil jelas di atas soal) -->
+          <article class="bg-white rounded-3xl border border-indigo-100 shadow-sm overflow-hidden">
+            <div class="bg-gradient-to-r from-indigo-50 to-slate-50 px-4 sm:px-6 py-3.5 border-b border-indigo-100 flex items-center justify-between gap-2">
+              <div class="min-w-0">
+                <span id="reading-instruction" class="block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-brand-600">
+                  Read the following text carefully to answer questions 1&ndash;5!
+                </span>
+                <h3 id="reading-title" class="text-sm sm:text-base font-extrabold text-slate-900 mt-0.5">
+                  Title of Reading Text
+                </h3>
+              </div>
+
+              <button
+                type="button"
+                id="btn-toggle-passage"
+                class="shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold text-brand-700 bg-white hover:bg-brand-50 border border-indigo-200 px-3 py-1.5 rounded-xl transition cursor-pointer no-select"
+              >
+                <span id="toggle-passage-label">Lipat Teks</span>
+                <svg id="toggle-passage-icon" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+                </svg>
+              </button>
+            </div>
+
+            <div id="reading-body-wrapper" class="p-4 sm:p-6 max-h-72 sm:max-h-80 overflow-y-auto reading-scroll bg-white">
+              <div id="reading-content" class="space-y-3.5 text-sm sm:text-[15px] text-slate-700 leading-relaxed text-justify">
+                <!-- Paragraf reading text dirender via JS -->
+              </div>
+            </div>
+          </article>
+
+          <!-- Kartu Pertanyaan & 5 Pilihan Jawaban -->
+          <div class="bg-white rounded-3xl border border-slate-200/80 shadow-sm p-4 sm:p-6 space-y-5">
+            <!-- Header Nomor Soal & Tombol Ragu-ragu -->
+            <div class="flex items-center justify-between gap-3 pb-3 border-b border-slate-100">
+              <div class="flex items-center gap-2.5">
+                <span id="question-number-pill" class="inline-flex items-center justify-center px-3.5 py-1.5 rounded-xl bg-brand-600 text-white font-extrabold text-sm">
+                  Soal 1 / 20
+                </span>
+                <span id="question-topic-tag" class="hidden sm:inline-block text-xs font-medium text-slate-500 bg-slate-100 px-2.5 py-1 rounded-lg">
+                  Analytical Exposition
+                </span>
+              </div>
+
+              <button
+                type="button"
+                id="btn-flag-question"
+                class="inline-flex items-center gap-1.5 min-h-[40px] px-3.5 py-1.5 rounded-xl border text-xs sm:text-sm font-semibold transition cursor-pointer no-select bg-slate-50 border-slate-200 text-slate-600 hover:bg-amber-50 hover:border-amber-300 hover:text-amber-700"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
+                </svg>
+                <span id="flag-btn-text">Tandai Ragu-ragu</span>
+              </button>
+            </div>
+
+            <!-- Teks Pertanyaan -->
+            <div id="question-text" class="text-base sm:text-[17px] font-semibold text-slate-900 leading-relaxed">
+              Question stem goes here...
+            </div>
+
+            <!-- 5 Pilihan Jawaban (A, B, C, D, E) -->
+            <div id="options-container" class="space-y-3" role="radiogroup" aria-label="Pilihan Jawaban">
+              <!-- Opsi dirender dinamis via JS -->
+            </div>
+
+            <!-- Navigasi Bawah Desktop -->
+            <div class="hidden lg:flex items-center justify-between pt-4 border-t border-slate-100">
+              <button
+                type="button"
+                id="btn-prev-desktop"
+                class="min-h-[46px] px-5 py-2.5 rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 disabled:opacity-40 disabled:pointer-events-none text-slate-700 font-semibold text-sm inline-flex items-center gap-2 transition cursor-pointer"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15 19l-7-7 7-7" />
+                </svg>
+                <span>Sebelumnya</span>
+              </button>
+
+              <button
+                type="button"
+                id="btn-next-desktop"
+                class="min-h-[46px] px-6 py-2.5 rounded-2xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm inline-flex items-center gap-2 shadow-md shadow-brand-600/20 transition cursor-pointer"
+              >
+                <span id="btn-next-desktop-label">Selanjutnya</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kolom Sidebar Desktop: Question Navigator (4 kolom di Desktop) -->
+        <aside class="hidden lg:block lg:col-span-4 sticky top-20">
+          <div class="bg-white rounded-3xl border border-slate-200/80 shadow-sm p-5 space-y-5">
+            <div class="flex items-center justify-between">
+              <h3 class="font-extrabold text-slate-900 text-base">Question Navigator</h3>
+              <span id="nav-progress-desktop" class="text-xs font-bold text-brand-700 bg-brand-50 px-2.5 py-1 rounded-lg">
+                0 / 20 Terjawab
+              </span>
+            </div>
+
+            <!-- Grid Nomor Soal Desktop -->
+            <div id="navigator-desktop-content" class="space-y-4">
+              <!-- Diisi via JS -->
+            </div>
+
+            <!-- Legenda Warna -->
+            <div class="grid grid-cols-2 gap-2 pt-3 border-t border-slate-100 text-xs text-slate-600">
+              <div class="flex items-center gap-2">
+                <span class="w-3.5 h-3.5 rounded-md bg-brand-600 inline-block"></span>
+                <span>Sedang Dibuka</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-3.5 h-3.5 rounded-md bg-emerald-500 inline-block"></span>
+                <span>Sudah Dijawab</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-3.5 h-3.5 rounded-md bg-amber-400 inline-block"></span>
+                <span>Ragu-ragu</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-3.5 h-3.5 rounded-md bg-slate-100 border border-slate-300 inline-block"></span>
+                <span>Belum Dijawab</span>
+              </div>
+            </div>
+
+            <!-- Tombol Selesai Ujian -->
+            <button
+              type="button"
+              id="btn-submit-desktop"
+              class="w-full min-h-[48px] bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] text-white font-bold text-sm rounded-2xl shadow-lg shadow-emerald-600/20 flex items-center justify-center gap-2 transition cursor-pointer"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Kumpulkan Ujian</span>
+            </button>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+
+    <!-- Bottom Fixed Bar untuk Mobile & Tablet (< lg) -->
+    <nav class="lg:hidden fixed bottom-0 inset-x-0 z-30 bg-white/95 backdrop-blur-md border-t border-slate-200 px-3 pt-2.5 safe-bottom shadow-[0_-4px_20px_rgba(15,23,42,0.06)]">
+      <div class="max-w-xl mx-auto flex items-center justify-between gap-2">
+        <button
+          type="button"
+          id="btn-prev-mobile"
+          class="min-h-[46px] px-3.5 rounded-2xl border border-slate-200 bg-slate-50 active:bg-slate-100 disabled:opacity-40 text-slate-700 font-semibold text-xs sm:text-sm inline-flex items-center justify-center gap-1 transition no-select"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15 19l-7-7 7-7" />
+          </svg>
+          <span>Prev</span>
+        </button>
+
+        <button
+          type="button"
+          id="btn-open-nav-mobile"
+          class="flex-1 min-h-[46px] px-3 rounded-2xl bg-slate-100 hover:bg-slate-200/80 active:bg-slate-200 text-slate-800 font-bold text-xs sm:text-sm inline-flex items-center justify-center gap-2 transition no-select"
+        >
+          <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+          </svg>
+          <span id="mobile-nav-btn-text">Soal 1/20</span>
+        </button>
+
+        <button
+          type="button"
+          id="btn-next-mobile"
+          class="min-h-[46px] px-4 rounded-2xl bg-brand-600 active:bg-brand-700 text-white font-bold text-xs sm:text-sm inline-flex items-center justify-center gap-1 shadow-md shadow-brand-600/20 transition no-select"
+        >
+          <span id="btn-next-mobile-label">Next</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 4. HALAMAN HASIL UJIAN & PEMBAHASAN                                   -->
+  <!-- ===================================================================== -->
+  <section id="screen-result" class="hidden flex-1 py-6 px-4 sm:px-6 safe-top safe-bottom">
+    <div class="max-w-4xl mx-auto space-y-6 animate-fade-up">
+      <!-- Kartu Ringkasan Skor -->
+      <div class="bg-white rounded-3xl shadow-xl shadow-slate-200/70 border border-slate-100 overflow-hidden">
+        <div class="bg-gradient-to-br from-brand-700 via-indigo-800 to-slate-900 px-6 py-8 sm:px-8 text-white text-center relative overflow-hidden">
+          <span id="result-status-badge" class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold bg-white/15 border border-white/20 text-indigo-100 mb-3">
+            Ujian Selesai
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold">Hasil Latihan ASAS Bahasa Inggris</h2>
+          <p id="result-student-identity" class="text-indigo-200 text-sm mt-1">Nama &bull; NIS &bull; Kelas</p>
+
+          <!-- Lingkaran Skor Akhir -->
+          <div class="mt-6 inline-flex flex-col items-center justify-center w-36 h-36 rounded-full bg-white/10 backdrop-blur-md border-4 border-white/25 shadow-inner">
+            <span class="text-xs uppercase tracking-widest text-indigo-200 font-semibold">Nilai Akhir</span>
+            <span id="result-final-score" class="text-5xl font-extrabold tracking-tight mt-0.5">0</span>
+            <span class="text-xs text-indigo-200 mt-0.5">dari 100</span>
+          </div>
+        </div>
+
+        <div class="p-6 sm:p-8 space-y-6">
+          <!-- Status Pengiriman ke Google Apps Script -->
+          <div id="sync-status-box" class="rounded-2xl p-4 border flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-indigo-50 border-indigo-200 text-indigo-900">
+            <div class="flex items-start sm:items-center gap-3">
+              <div id="sync-spinner" class="w-5 h-5 border-2 border-brand-600 border-t-transparent rounded-full animate-spin shrink-0 mt-0.5 sm:mt-0"></div>
+              <svg id="sync-check-icon" class="hidden w-6 h-6 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div>
+                <p id="sync-status-title" class="font-bold text-sm">Mengirimkan data ke Google Spreadsheet...</p>
+                <p id="sync-status-desc" class="text-xs opacity-80 mt-0.5">Mohon tunggu sebentar hingga proses sinkronisasi selesai.</p>
+              </div>
+            </div>
+            <button
+              type="button"
+              id="btn-retry-sync"
+              class="hidden shrink-0 min-h-[44px] px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold transition cursor-pointer"
+            >
+              Kirim Ulang ke Spreadsheet
+            </button>
+          </div>
+
+          <!-- Rincian Statistik -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+            <div class="rounded-2xl bg-emerald-50 border border-emerald-100 p-4">
+              <span class="block text-xs font-semibold text-emerald-700">Correct Answers</span>
+              <span id="res-correct" class="block text-2xl font-extrabold text-emerald-900 mt-1">0/20</span>
+            </div>
+            <div class="rounded-2xl bg-rose-50 border border-rose-100 p-4">
+              <span class="block text-xs font-semibold text-rose-700">Jawaban Salah</span>
+              <span id="res-wrong" class="block text-2xl font-extrabold text-rose-900 mt-1">0/20</span>
+            </div>
+            <div class="rounded-2xl bg-indigo-50 border border-indigo-100 p-4">
+              <span class="block text-xs font-semibold text-indigo-700">Lesson 1 (Exposition)</span>
+              <span id="res-lesson1" class="block text-2xl font-extrabold text-indigo-900 mt-1">0</span>
+            </div>
+            <div class="rounded-2xl bg-purple-50 border border-purple-100 p-4">
+              <span class="block text-xs font-semibold text-purple-700">Lesson 2 (Fantasy)</span>
+              <span id="res-lesson2" class="block text-2xl font-extrabold text-purple-900 mt-1">0</span>
+            </div>
+          </div>
+
+          <!-- Ringkasan Data Terekam Spreadsheet (Cheat Warnings & Cheat Notes) -->
+          <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4 sm:p-5 space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-2.5 border-b border-slate-200/80 text-xs sm:text-sm">
+              <span class="text-slate-600 font-semibold">Cheat Warnings (Peringatan Pelanggaran):</span>
+              <span id="res-violations" class="font-extrabold px-2.5 py-1 rounded-lg bg-slate-200/80 text-slate-900">0 dari 3 Pelanggaran</span>
+            </div>
+            <div class="space-y-1.5">
+              <span class="block text-xs font-bold uppercase tracking-wider text-slate-500">Cheat Notes (Log Aktivitas):</span>
+              <div id="res-cheat-notes" class="text-xs sm:text-sm text-slate-700 bg-white border border-slate-200 rounded-xl p-3 leading-relaxed">
+                Tidak ada pelanggaran
+              </div>
+            </div>
+          </div>
+
+          <!-- Tombol Aksi -->
+          <div class="flex flex-col sm:flex-row gap-3 pt-2">
+            <button
+              type="button"
+              id="btn-toggle-review"
+              class="flex-1 min-h-[48px] px-5 py-3 rounded-2xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm transition cursor-pointer"
+            >
+              Lihat Kunci Jawaban &amp; Pembahasan
+            </button>
+            <button
+              type="button"
+              id="btn-restart-app"
+              class="min-h-[48px] px-5 py-3 rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-sm transition cursor-pointer"
+            >
+              Kembali ke Halaman Awal
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel Pembahasan Soal (Toggleable) -->
+      <div id="review-container" class="hidden space-y-4">
+        <div class="flex items-center justify-between px-1">
+          <h3 class="text-lg font-extrabold text-slate-900">Kunci Jawaban &amp; Pembahasan Singkat</h3>
+          <span class="text-xs font-medium text-slate-500">20 Soal Pilihan Ganda</span>
+        </div>
+        <div id="review-list" class="space-y-4">
+          <!-- Item pembahasan dirender via JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL 1: DRAWER QUESTION NAVIGATOR (MOBILE / TABLET)                  -->
+  <!-- ===================================================================== -->
+  <div id="mobile-nav-modal" class="hidden fixed inset-0 z-40 bg-slate-900/60 backdrop-blur-xs flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-white w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl p-5 sm:p-6 space-y-5 max-h-[88vh] overflow-y-auto safe-bottom animate-fade-up">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div>
+          <h3 class="font-extrabold text-slate-900 text-base">Question Navigator</h3>
+          <p id="nav-progress-mobile" class="text-xs text-slate-500 mt-0.5">0 dari 20 soal terjawab</p>
+        </div>
+        <button
+          type="button"
+          id="btn-close-nav-mobile"
+          class="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center cursor-pointer"
+          aria-label="Tutup Navigator"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div id="navigator-mobile-content" class="space-y-4">
+        <!-- Diisi via JS -->
+      </div>
+
+      <!-- Legenda -->
+      <div class="grid grid-cols-2 gap-2 pt-3 border-t border-slate-100 text-xs text-slate-600">
+        <div class="flex items-center gap-2">
+          <span class="w-3.5 h-3.5 rounded-md bg-brand-600 inline-block"></span>
+          <span>Sedang Dibuka</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-3.5 h-3.5 rounded-md bg-emerald-500 inline-block"></span>
+          <span>Sudah Dijawab</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-3.5 h-3.5 rounded-md bg-amber-400 inline-block"></span>
+          <span>Ragu-ragu</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-3.5 h-3.5 rounded-md bg-slate-100 border border-slate-300 inline-block"></span>
+          <span>Belum Dijawab</span>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        id="btn-submit-mobile"
+        class="w-full min-h-[50px] bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm rounded-2xl shadow-lg shadow-emerald-600/20 flex items-center justify-center gap-2 cursor-pointer"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>Kumpulkan Ujian Sekarang</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL 2: KONFIRMASI PENGUMPULAN UJIAN (CUSTOM DIALOG)                 -->
+  <!-- ===================================================================== -->
+  <div id="confirm-submit-modal" class="hidden fixed inset-0 z-50 bg-slate-900/65 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-md rounded-3xl p-6 space-y-5 shadow-2xl animate-fade-up">
+      <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <div class="text-center space-y-1.5">
+        <h3 class="text-lg font-extrabold text-slate-900">Kumpulkan Jawaban Ujian?</h3>
+        <p id="confirm-submit-summary" class="text-sm text-slate-600 leading-relaxed">
+          Pastikan seluruh soal telah diperiksa sebelum dikumpulkan.
+        </p>
+      </div>
+      <div class="grid grid-cols-2 gap-3 pt-1">
+        <button
+          type="button"
+          id="btn-cancel-submit"
+          class="min-h-[46px] px-4 py-2.5 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold text-sm cursor-pointer"
+        >
+          Periksa Lagi
+        </button>
+        <button
+          type="button"
+          id="btn-confirm-submit"
+          class="min-h-[46px] px-4 py-2.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md shadow-emerald-600/20 cursor-pointer"
+        >
+          Ya, Kumpulkan
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL 3: CHEATING DETECTOR WARNING (MEMBLOKIR LAYAR)                  -->
+  <!-- ===================================================================== -->
+  <div id="cheating-modal" class="hidden fixed inset-0 z-[60] bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-md rounded-3xl border-2 border-rose-500 p-6 sm:p-7 space-y-5 shadow-2xl text-center animate-fade-up">
+      <div class="w-16 h-16 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center mx-auto">
+        <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+      </div>
+
+      <div class="space-y-2.5">
+        <h3 class="text-xl font-extrabold text-rose-700">Pelanggaran Terdeteksi</h3>
+        <p id="cheating-warning-text" class="text-sm sm:text-base text-slate-800 font-medium leading-relaxed">
+          &#9888;&#65039; Peringatan ke-1 dari 3: kamu terdeteksi keluar dari mode layar penuh. Jangan membuka tab atau aplikasi lain.<br />
+          Jika mencapai 3x, ujian otomatis dikumpulkan.
+        </p>
+        <div id="cheating-detail-text" class="text-xs text-rose-800 bg-rose-50 border border-rose-200 rounded-xl px-3.5 py-2.5 font-medium">
+          Detail pelanggaran tercatat otomatis oleh sistem.
+        </div>
+      </div>
+
+      <button
+        type="button"
+        id="btn-resume-fullscreen"
+        class="w-full min-h-[50px] px-5 py-3 rounded-2xl bg-rose-600 hover:bg-rose-700 active:scale-[0.99] text-white font-bold text-sm sm:text-base shadow-lg shadow-rose-600/30 transition cursor-pointer"
+      >
+        Kembali ke Layar Penuh &amp; Lanjutkan.
+      </button>
+    </div>
+  </div>
+
+  <!-- Banner Notifikasi Auto-Submit Pelanggaran ke-3 -->
+  <div id="autosubmit-banner" class="hidden fixed top-4 inset-x-4 z-[70] max-w-lg mx-auto bg-rose-700 text-white px-5 py-4 rounded-2xl shadow-2xl border border-rose-400 flex items-center gap-3">
+    <svg class="w-6 h-6 text-amber-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    <p class="text-xs sm:text-sm font-bold leading-snug">
+      &#9888;&#65039; Peringatan ke-3 dari 3 terdeteksi! Batas pelanggaran tercapai, ujian otomatis dikumpulkan.
+    </p>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- JAVASCRIPT APPLICATION LOGIC & QUESTION BANK                          -->
+  <!-- ===================================================================== -->
+  <script>
+    /**
+     * Endpoint Google Apps Script Web App untuk pengiriman hasil ujian
+     */
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyY2nlhUyN00TvPdxGY1jGq-KnkoqZXIPb34pPpGizxnY8f4PbWJLMb-QCcP15e56dNBw/exec';
+
+    /**
+     * BANK TEKS BACAAN (4 Reading Texts: 2 Analytical Exposition + 2 Fantasy Story)
+     * Menggunakan template literal agar tanda apostrof dalam bahasa Inggris aman tanpa SyntaxError.
+     */
+    const READING_TEXTS = {
+      text1: {
+        id: 'text1',
+        lesson: 'Lesson 1: Analytical Exposition',
+        instruction: 'Read the following text carefully to answer questions 1–5!',
+        title: `Why Digital Literacy Should Be a Core Subject in High Schools`,
+        paragraphs: [
+          `In today's hyper-connected era, digital literacy is no longer an optional skill for high school students; it is an essential survival tool. First, students are constantly exposed to vast amounts of online information, making the ability to distinguish credible sources from hoaxes crucial for academic and civic integrity.`,
+          `Second, understanding digital footprints and cybersecurity protects teenagers from identity theft and cyberbullying. Finally, future workplaces demand fluency in digital collaboration tools. Therefore, high schools must integrate comprehensive digital literacy into their core curriculum.`
+        ]
+      },
+      text2: {
+        id: 'text2',
+        lesson: 'Lesson 1: Analytical Exposition',
+        instruction: 'Read the following text carefully to answer questions 6–10!',
+        title: `The Urgent Need to Reduce Single-Use Plastics in School Canteens`,
+        paragraphs: [
+          `Single-use plastics in school cafeterias pose a severe threat to both environmental sustainability and student health. Every day, hundreds of plastic bottles and food wrappers are discarded, clogging local drainage systems and contributing to microplastic pollution.`,
+          `Moreover, certain low-grade plastics leach harmful chemicals into hot foods and beverages, risking long-term endocrine disruption. By switching to reusable containers and installing water refill stations, schools can drastically cut waste. Thus, banning single-use plastics at school is an urgent necessity.`
+        ]
+      },
+      text3: {
+        id: 'text3',
+        lesson: 'Lesson 2: Fantasy Story',
+        instruction: 'Read the following fantasy story carefully to answer questions 11–15!',
+        title: `The Whispering Compass of Eldoria`,
+        paragraphs: [
+          `High above the misty valleys of Eldoria stood the Obsidian Clocktower, whose silver hands moved backward whenever danger approached the kingdom. One stormy midnight, young apprentice Lyra noticed the hands spinning wildly toward the thirteenth hour.`,
+          `Ignoring the Master Clockmaker's warning, she climbed the spiral stairs and discovered a Shadow Weaver feeding on the tower's glowing time-crystal. Drawing her starlight lantern, Lyra reflected the crystal's pure beam onto the creature, banishing it into the void and restoring dawn to Eldoria.`
+        ]
+      },
+      text4: {
+        id: 'text4',
+        lesson: 'Lesson 2: Fantasy Story',
+        instruction: 'Read the following fantasy story carefully to answer questions 16–20!',
+        title: `Kael and the Living Map of the Sky-Sea`,
+        paragraphs: [
+          `Across the Azure Sky-Sea, islands drifted like emerald ships tethered by ancient wind-magic. Kael, a teenage cartographer with a brass compass that pointed toward lost memories instead of north, was hired to map the elusive Isle of Echoes.`,
+          `When a sudden sky-tempest tore his airship's sails, Kael followed his spinning compass needle through a curtain of golden clouds. He landed safely on the hidden island, where luminous crystal trees sang the forgotten history of the sky-sailors, allowing him to complete the world's first living map.`
+        ]
+      }
+    };
+
+    /**
+     * BANK SOAL (20 Soal Pilihan Ganda dengan 5 Opsi A-E)
+     */
+    const QUESTIONS = [
+      // --- LESSON 1: ANALYTICAL EXPOSITION (1–10) ---
+      {
+        number: 1,
+        textId: 'text1',
+        lessonNumber: 1,
+        topic: 'Analytical Exposition • Main Thesis',
+        question: `What is the main thesis of the text above?`,
+        options: [
+          `High school students should avoid using social media during school hours.`,
+          `Digital literacy must be integrated into the core high school curriculum.`,
+          `Future workplaces only hire graduates with computer science degrees.`,
+          `Cyberbullying is the only danger teenagers face on the internet today.`,
+          `Academic integrity is declining due to the availability of online books.`
+        ],
+        answerIndex: 1,
+        explanation: `Kalimat penutup dan pernyataan posisi utama penulis menegaskan bahwa sekolah menengah harus mengintegrasikan literasi digital ke dalam kurikulum inti ("Therefore, high schools must integrate comprehensive digital literacy into their core curriculum").`
+      },
+      {
+        number: 2,
+        textId: 'text1',
+        lessonNumber: 1,
+        topic: 'Analytical Exposition • Detailed Information',
+        question: `According to the text, why is distinguishing credible sources from hoaxes important for students?`,
+        options: [
+          `To help them become famous content creators on social media.`,
+          `To reduce the cost of buying printed textbooks at school.`,
+          `To maintain both academic and civic integrity.`,
+          `To replace teachers with automated online learning platforms.`,
+          `To prevent students from accessing any foreign websites.`
+        ],
+        answerIndex: 2,
+        explanation: `Pada argumen pertama disebutkan: "...making the ability to distinguish credible sources from hoaxes crucial for academic and civic integrity."`
+      },
+      {
+        number: 3,
+        textId: 'text1',
+        lessonNumber: 1,
+        topic: 'Analytical Exposition • Supporting Argument',
+        question: `What benefit does understanding cybersecurity provide to teenagers based on the second argument?`,
+        options: [
+          `It guarantees faster internet connections at home and school.`,
+          `It protects them from identity theft and cyberbullying.`,
+          `It allows them to bypass school network restrictions easily.`,
+          `It teaches them how to build commercial software applications.`,
+          `It eliminates the need for digital collaboration tools at work.`
+        ],
+        answerIndex: 1,
+        explanation: `Argumen kedua menjelaskan bahwa pemahaman jejak digital dan keamanan siber melindungi remaja dari pencurian identitas dan perundungan siber ("protects teenagers from identity theft and cyberbullying").`
+      },
+      {
+        number: 4,
+        textId: 'text1',
+        lessonNumber: 1,
+        topic: 'Analytical Exposition • Vocabulary',
+        question: `The word "credible" in the first paragraph is closest in meaning to...`,
+        options: [
+          `entertaining`,
+          `complicated`,
+          `trustworthy`,
+          `temporary`,
+          `viral`
+        ],
+        answerIndex: 2,
+        explanation: `Kata "credible" berarti dapat dipercaya atau kredibel, yang bersinonim dengan "trustworthy".`
+      },
+      {
+        number: 5,
+        textId: 'text1',
+        lessonNumber: 1,
+        topic: 'Analytical Exposition • Generic Structure',
+        question: `What is the communicative function of the last sentence ("Therefore, high schools must integrate...") in the structure of an analytical exposition text?`,
+        options: [
+          `Orientation, to introduce the characters and setting of the story.`,
+          `Complication, to describe a sudden crisis faced by high schools.`,
+          `Description, to list the physical specifications of digital devices.`,
+          `Reiteration, to restate and strengthen the writer's main position.`,
+          `Resolution, to narrate how a historical problem was finally solved.`
+        ],
+        answerIndex: 3,
+        explanation: `Struktur teks Analytical Exposition terdiri atas Thesis, Arguments, dan Reiteration. Kalimat diawali "Therefore..." berfungsi sebagai Reiteration untuk menegaskan kembali posisi penulis.`
+      },
+      {
+        number: 6,
+        textId: 'text2',
+        lessonNumber: 1,
+        topic: 'Analytical Exposition • Social Function',
+        question: `What is the primary social function of the text?`,
+        options: [
+          `To entertain readers with a fictional story about school cafeterias.`,
+          `To persuade readers that banning single-use plastics at school is urgently needed.`,
+          `To describe step-by-step instructions on how to recycle plastic bottles.`,
+          `To report a past event about flooding caused by clogged drains.`,
+          `To compare the prices of reusable containers and plastic wrappers.`
+        ],
+        answerIndex: 1,
+        explanation: `Fungsi sosial teks Analytical Exposition adalah meyakinkan pembaca bahwa suatu isu penting untuk diperhatikan ("banning single-use plastics at school is an urgent necessity").`
+      },
+      {
+        number: 7,
+        textId: 'text2',
+        lessonNumber: 1,
+        topic: 'Analytical Exposition • Cause & Effect',
+        question: `How do discarded plastic bottles and wrappers affect the local environment according to the text?`,
+        options: [
+          `They enrich the soil around school gardens with nutrients.`,
+          `They clog local drainage systems and cause microplastic pollution.`,
+          `They attract beneficial wildlife to the school cafeteria area.`,
+          `They lower the temperature of rainwater in urban neighborhoods.`,
+          `They dissolve harmlessly within a few days of being thrown away.`
+        ],
+        answerIndex: 1,
+        explanation: `Pada paragraf pertama dinyatakan sampah plastik menyumbat saluran drainase lokal dan memicu polusi mikroplastik ("clogging local drainage systems and contributing to microplastic pollution").`
+      },
+      {
+        number: 8,
+        textId: 'text2',
+        lessonNumber: 1,
+        topic: 'Analytical Exposition • Health Impact',
+        question: `What health risk is mentioned when low-grade plastics come into contact with hot foods and drinks?`,
+        options: [
+          `Immediate allergic skin rashes on students' hands.`,
+          `Severe dehydration during physical education classes.`,
+          `Long-term endocrine disruption caused by leached chemicals.`,
+          `Temporary loss of appetite and weakened eyesight.`,
+          `Increased sensitivity to cold temperatures in classrooms.`
+        ],
+        answerIndex: 2,
+        explanation: `Paragraf kedua menyebutkan plastik berkualitas rendah meluruhkan zat kimia berbahaya ke makanan/minuman panas yang berisiko menyebabkan gangguan endokrin jangka panjang ("risking long-term endocrine disruption").`
+      },
+      {
+        number: 9,
+        textId: 'text2',
+        lessonNumber: 1,
+        topic: 'Analytical Exposition • Proposed Solution',
+        question: `Which practical solution is suggested in the text to reduce plastic waste at school?`,
+        options: [
+          `Closing all school cafeterias and requiring students to fast.`,
+          `Burning plastic wrappers behind the school building every afternoon.`,
+          `Importing expensive biodegradable packaging from overseas.`,
+          `Switching to reusable containers and providing water refill stations.`,
+          `Charging students double for buying bottled water at school.`
+        ],
+        answerIndex: 3,
+        explanation: `Penulis menyarankan beralih ke wadah guna ulang dan menyediakan stasiun isi ulang air minum ("switching to reusable containers and installing water refill stations").`
+      },
+      {
+        number: 10,
+        textId: 'text2',
+        lessonNumber: 1,
+        topic: 'Analytical Exposition • Language Features',
+        question: `Notice the connective words "Moreover" and "Thus" in the text. What role do they play in an analytical exposition?`,
+        options: [
+          `They show chronological time order in a historical biography.`,
+          `They introduce direct dialogue between two fictional characters.`,
+          `They link supporting arguments and signal the final conclusion logically.`,
+          `They express doubt and uncertainty about scientific facts.`,
+          `They describe the physical appearance of the school cafeteria.`
+        ],
+        answerIndex: 2,
+        explanation: `Konjungsi internal/kausal seperti "Moreover" (menambah argumen) dan "Thus" (menandai simpulan) merupakan ciri kebahasaan utama Analytical Exposition.`
+      },
+
+      // --- LESSON 2: FANTASY STORY TEXT (11–20) ---
+      {
+        number: 11,
+        textId: 'text3',
+        lessonNumber: 2,
+        topic: 'Fantasy Story • Setting & Magical Sign',
+        question: `What unusual magical phenomenon indicated that danger was approaching Eldoria?`,
+        options: [
+          `The misty valleys turned completely into solid ice.`,
+          `The silver hands of the Obsidian Clocktower moved backward.`,
+          `The Master Clockmaker disappeared into a cloud of smoke.`,
+          `All lanterns in the kingdom suddenly glowed bright crimson.`,
+          `The spiral stairs of the tower vanished at midnight.`
+        ],
+        answerIndex: 1,
+        explanation: `Kalimat pembuka menjelaskan jarum perak Menara Jam Obsidian bergerak mundur setiap kali bahaya mendekati kerajaan ("whose silver hands moved backward whenever danger approached the kingdom").`
+      },
+      {
+        number: 12,
+        textId: 'text3',
+        lessonNumber: 2,
+        topic: 'Fantasy Story • Character Motivation',
+        question: `Why did Lyra decide to climb the spiral stairs during the stormy midnight?`,
+        options: [
+          `She wanted to steal the glowing time-crystal for herself.`,
+          `She was looking for the Master Clockmaker who was lost.`,
+          `She saw the clock's hands spinning wildly toward the thirteenth hour.`,
+          `She needed to repair a broken window at the top of the tower.`,
+          `She was ordered by the king to ring the midnight bell.`
+        ],
+        answerIndex: 2,
+        explanation: `Lyra melihat jarum jam berputar liar menuju jam ketiga belas ("noticed the hands spinning wildly toward the thirteenth hour"), sehingga ia naik memeriksa puncak menara.`
+      },
+      {
+        number: 13,
+        textId: 'text3',
+        lessonNumber: 2,
+        topic: 'Fantasy Story • Plot Details',
+        question: `What did Lyra find at the top of the Obsidian Clocktower?`,
+        options: [
+          `A sleeping dragon guarding a chest of silver coins.`,
+          `A Shadow Weaver feeding on the tower's glowing time-crystal.`,
+          `An ancient spellbook floating above a stone pedestal.`,
+          `A group of soldiers preparing to attack the kingdom.`,
+          `A broken portal leading to an underground cavern.`
+        ],
+        answerIndex: 1,
+        explanation: `Di puncak menara, Lyra menemukan makhluk Shadow Weaver yang sedang menyerap energi kristal waktu ("discovered a Shadow Weaver feeding on the tower's glowing time-crystal").`
+      },
+      {
+        number: 14,
+        textId: 'text3',
+        lessonNumber: 2,
+        topic: 'Fantasy Story • Resolution',
+        question: `How did Lyra successfully defeat the Shadow Weaver?`,
+        options: [
+          `She shattered the time-crystal with a heavy iron hammer.`,
+          `She recited a freezing spell taught by the Master Clockmaker.`,
+          `She used her starlight lantern to reflect the crystal's pure beam onto it.`,
+          `She pushed the creature off the balcony into the misty valley.`,
+          `She locked the creature inside a magical silver cage.`
+        ],
+        answerIndex: 2,
+        explanation: `Lyra menggunakan lentera cahaya bintangnya untuk memantulkan sinar murni kristal ke arah Shadow Weaver dan mengusirnya ("reflected the crystal's pure beam onto the creature, banishing it into the void").`
+      },
+      {
+        number: 15,
+        textId: 'text3',
+        lessonNumber: 2,
+        topic: 'Fantasy Story • Narrative Structure',
+        question: `Which narrative element is represented by the Shadow Weaver draining the time-crystal?`,
+        options: [
+          `Orientation, where the peaceful setting of Eldoria is introduced.`,
+          `Complication, where the central conflict and threat emerge.`,
+          `Resolution, where harmony and dawn return to the kingdom.`,
+          `Coda, where the author explains the history of clockmaking.`,
+          `Reiteration, where the narrator summarizes political arguments.`
+        ],
+        answerIndex: 1,
+        explanation: `Kemunculan ancaman Shadow Weaver yang menyerap kristal waktu merupakan bagian Complication (munculnya konflik utama dalam teks naratif).`
+      },
+      {
+        number: 16,
+        textId: 'text4',
+        lessonNumber: 2,
+        topic: 'Fantasy Story • Magical Artifact',
+        question: `What made Kael's brass compass extraordinary compared to an ordinary compass?`,
+        options: [
+          `It could control the direction of storms across the Sky-Sea.`,
+          `It pointed toward lost memories instead of pointing north.`,
+          `It transformed into a flying airship whenever he whispered a spell.`,
+          `It was carved out of luminous crystal from the Isle of Echoes.`,
+          `It could speak aloud and give warnings in ancient languages.`
+        ],
+        answerIndex: 1,
+        explanation: `Kompas kuningan milik Kael menunjuk ke arah ingatan yang hilang alih-alih arah utara ("pointed toward lost memories instead of north").`
+      },
+      {
+        number: 17,
+        textId: 'text4',
+        lessonNumber: 2,
+        topic: 'Fantasy Story • Complication',
+        question: `What crisis (complication) did Kael encounter on his voyage?`,
+        options: [
+          `His crew mutinied and stole his brass compass.`,
+          `He ran out of food and drinking water in the middle of the sea.`,
+          `A sudden sky-tempest tore the sails of his airship.`,
+          `A giant sky-serpent swallowed his map scrolls.`,
+          `The wind-magic holding the islands together completely stopped.`
+        ],
+        answerIndex: 2,
+        explanation: `Badai langit mendadak merobek layar kapal udara Kael ("When a sudden sky-tempest tore his airship's sails").`
+      },
+      {
+        number: 18,
+        textId: 'text4',
+        lessonNumber: 2,
+        topic: 'Fantasy Story • Action & Sequence',
+        question: `How did Kael reach the hidden Isle of Echoes safely?`,
+        options: [
+          `He swam across the clouds using enchanted wings.`,
+          `He followed his spinning compass needle through golden clouds.`,
+          `He was rescued by a fleet of royal sky-sailors.`,
+          `He anchored his airship to a passing emerald island.`,
+          `He waited until the storm cleared and used the stars to navigate.`
+        ],
+        answerIndex: 1,
+        explanation: `Kael mengikuti jarum kompasnya yang berputar menembus tirai awan keemasan hingga mendarat dengan selamat ("followed his spinning compass needle through a curtain of golden clouds").`
+      },
+      {
+        number: 19,
+        textId: 'text4',
+        lessonNumber: 2,
+        topic: 'Fantasy Story • Resolution & Discovery',
+        question: `What magical discovery did Kael make once he landed on the island?`,
+        options: [
+          `Abandoned airships filled with ancient gold treasures.`,
+          `Luminous crystal trees singing the forgotten history of sky-sailors.`,
+          `An underground library guarded by stone golems.`,
+          `A fountain of wind-magic that repaired his torn sails.`,
+          `A village of cartographers who had been missing for centuries.`
+        ],
+        answerIndex: 1,
+        explanation: `Di pulau tersebut, pepohonan kristal bercahaya menyanyikan sejarah para pelaut langit yang terlupakan ("luminous crystal trees sang the forgotten history of the sky-sailors").`
+      },
+      {
+        number: 20,
+        textId: 'text4',
+        lessonNumber: 2,
+        topic: 'Fantasy Story • Vocabulary in Context',
+        question: `What is the closest meaning of the word "elusive" in the sentence "...hired to map the elusive Isle of Echoes"?`,
+        options: [
+          `Extremely crowded and noisy`,
+          `Difficult to find or track down`,
+          `Completely destroyed by storms`,
+          `Located close to the capital city`,
+          `Famous among all beginner sailors`
+        ],
+        answerIndex: 1,
+        explanation: `Kata "elusive" berarti sulit ditemukan, sukar dilacak, atau misterius ("difficult to find or track down").`
+      }
+    ];
+
+    /**
+     * STATE APLIKASI
+     */
+    const EXAM_DURATION_SECONDS = 45 * 60; // 45 menit
+    const OPTION_LETTERS = ['A', 'B', 'C', 'D', 'E'];
+
+    const state = {
+      student: {
+        nama: '',
+        nis: '',
+        kelas: ''
+      },
+      currentScreen: 'login', // 'login' | 'instructions' | 'exam' | 'result'
+      currentQuestionIndex: 0,
+      answers: new Array(QUESTIONS.length).fill(null), // index 0..4 atau null
+      flagged: new Array(QUESTIONS.length).fill(false),
+      remainingSeconds: EXAM_DURATION_SECONDS,
+      timerInterval: null,
+      isExamActive: false,
+      isSubmitted: false,
+      passageCollapsed: false,
+      violationCount: 0,
+      cheatLogs: [],
+      lastViolationTimestamp: 0,
+      lastPayloadParams: null
+    };
+
+    /**
+     * REFERENSI ELEMEN DOM
+     */
+    const screens = {
+      login: document.getElementById('screen-login'),
+      instructions: document.getElementById('screen-instructions'),
+      exam: document.getElementById('screen-exam'),
+      result: document.getElementById('screen-result')
+    };
+
+    function switchScreen(target) {
+      state.currentScreen = target;
+      Object.keys(screens).forEach((key) => {
+        if (key === target) {
+          screens[key].classList.remove('hidden');
+        } else {
+          screens[key].classList.add('hidden');
+        }
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /**
+     * HELPER FORMAT WAKTU INDONESIA (WIB)
+     */
+    function getWibTimeString() {
+      try {
+        return new Date().toLocaleTimeString('id-ID', {
+          timeZone: 'Asia/Jakarta',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit'
+        }) + ' WIB';
+      } catch (e) {
+        const now = new Date();
+        return now.toTimeString().split(' ')[0];
+      }
+    }
+
+    function formatDuration(totalSeconds) {
+      const mins = Math.floor(totalSeconds / 60);
+      const secs = totalSeconds % 60;
+      return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
+
+    /**
+     * FULLSCREEN API HELPER (KOMPATIBEL ANDROID & IPHONE / IOS SAFARI)
+     */
+    function isFullscreenSupported() {
+      const el = document.documentElement;
+      return Boolean(
+        el.requestFullscreen ||
+        el.webkitRequestFullscreen ||
+        el.mozRequestFullScreen ||
+        el.msRequestFullscreen
+      );
+    }
+
+    function isCurrentlyFullscreen() {
+      return Boolean(
+        document.fullscreenElement ||
+        document.webkitFullscreenElement ||
+        document.mozFullScreenElement ||
+        document.msFullscreenElement
+      );
+    }
+
+    async function enterFullscreenSafe() {
+      const el = document.documentElement;
+      try {
+        if (el.requestFullscreen) {
+          await el.requestFullscreen();
+        } else if (el.webkitRequestFullscreen) {
+          await el.webkitRequestFullscreen();
+        } else if (el.mozRequestFullScreen) {
+          await el.mozRequestFullScreen();
+        } else if (el.msRequestFullscreen) {
+          await el.msRequestFullscreen();
+        }
+      } catch (err) {
+        // Pada iPhone Safari / browser tertentu yang membatasi Fullscreen API,
+        // ujian tetap berjalan lancar dengan deteksi tab/aplikasi aktif.
+        console.info('Fullscreen API fallback aktif:', err && err.message ? err.message : err);
+      }
+    }
+
+    async function exitFullscreenSafe() {
+      try {
+        if (isCurrentlyFullscreen()) {
+          if (document.exitFullscreen) {
+            await document.exitFullscreen();
+          } else if (document.webkitExitFullscreen) {
+            await document.webkitExitFullscreen();
+          } else if (document.mozCancelFullScreen) {
+            await document.mozCancelFullScreen();
+          } else if (document.msExitFullscreen) {
+            await document.msExitFullscreen();
+          }
+        }
+      } catch (err) {
+        // Abaikan jika sudah keluar dari fullscreen
+      }
+    }
+
+    /**
+     * 1. LOGIKA LOGIN SISWA
+     */
+    const loginForm = document.getElementById('login-form');
+    const loginError = document.getElementById('login-error');
+    const loginErrorText = document.getElementById('login-error-text');
+
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nama = document.getElementById('input-nama').value.trim();
+      const nis = document.getElementById('input-nis').value.trim();
+      const kelas = document.getElementById('input-kelas').value.trim();
+
+      if (!nama || !nis || !kelas) {
+        loginErrorText.textContent = 'Harap lengkapi Nama Lengkap, NIS, dan Kelas sebelum melanjutkan.';
+        loginError.classList.remove('hidden');
+        return;
+      }
+
+      if (nis.length < 3) {
+        loginErrorText.textContent = 'Nomor Induk Siswa (NIS) minimal terdiri dari 3 karakter.';
+        loginError.classList.remove('hidden');
+        return;
+      }
+
+      loginError.classList.add('hidden');
+      state.student = { nama, nis, kelas };
+
+      // Isi data pada halaman instruksi
+      document.getElementById('inst-nama').textContent = nama;
+      document.getElementById('inst-nis').textContent = nis;
+      document.getElementById('inst-kelas').textContent = kelas;
+
+      switchScreen('instructions');
+    });
+
+    document.getElementById('btn-back-login').addEventListener('click', () => {
+      switchScreen('login');
+    });
+
+    /**
+     * 2. LOGIKA HALAMAN TEST INSTRUCTION -> MULAI UJIAN
+     */
+    const checkboxAgree = document.getElementById('checkbox-agree');
+    const agreeError = document.getElementById('agree-error');
+
+    document.getElementById('btn-start-exam').addEventListener('click', async () => {
+      if (!checkboxAgree.checked) {
+        agreeError.classList.remove('hidden');
+        return;
+      }
+      agreeError.classList.add('hidden');
+
+      // Reset state ujian
+      state.currentQuestionIndex = 0;
+      state.answers = new Array(QUESTIONS.length).fill(null);
+      state.flagged = new Array(QUESTIONS.length).fill(false);
+      state.remainingSeconds = EXAM_DURATION_SECONDS;
+      state.violationCount = 0;
+      state.cheatLogs = [];
+      state.isSubmitted = false;
+      state.lastViolationTimestamp = Date.now();
+
+      // Set info header ujian
+      document.getElementById('exam-student-info').textContent = `${state.student.nama} (${state.student.nis}) • ${state.student.kelas}`;
+      updateViolationBadge();
+
+      // Masuk mode layar penuh terlebih dahulu sebelum mengaktifkan listener pelanggaran
+      await enterFullscreenSafe();
+
+      switchScreen('exam');
+      renderQuestion();
+      renderNavigators();
+
+      // Beri jeda singkat 600ms setelah transisi layar penuh agar tidak memicu false-positive
+      setTimeout(() => {
+        if (!state.isSubmitted) {
+          state.isExamActive = true;
+          state.lastViolationTimestamp = Date.now();
+        }
+      }, 600);
+
+      startTimer();
+    });
+
+    /**
+     * TIMER UJIAN
+     */
+    function startTimer() {
+      clearInterval(state.timerInterval);
+      const timerDisplay = document.getElementById('timer-display');
+      const timerBox = document.getElementById('timer-box');
+
+      timerDisplay.textContent = formatDuration(state.remainingSeconds);
+
+      state.timerInterval = setInterval(() => {
+        if (!state.isExamActive || state.isSubmitted) return;
+
+        state.remainingSeconds -= 1;
+        if (state.remainingSeconds < 0) state.remainingSeconds = 0;
+
+        timerDisplay.textContent = formatDuration(state.remainingSeconds);
+
+        // Peringatan visual jika sisa waktu <= 5 menit
+        if (state.remainingSeconds <= 300) {
+          timerBox.classList.remove('bg-brand-50', 'border-brand-200', 'text-brand-700');
+          timerBox.classList.add('bg-rose-50', 'border-rose-300', 'text-rose-700');
+        }
+
+        if (state.remainingSeconds === 0) {
+          clearInterval(state.timerInterval);
+          submitExam('Waktu Habis (Auto-Submit)');
+        }
+      }, 1000);
+    }
+
+    /**
+     * RENDER SOAL, TEKS BACAAN, & 5 PILIHAN JAWABAN
+     */
+    function renderQuestion() {
+      const q = QUESTIONS[state.currentQuestionIndex];
+      const passage = READING_TEXTS[q.textId];
+
+      // Update Header Badge & Reading Text
+      document.getElementById('exam-lesson-badge').textContent = passage.lesson;
+      document.getElementById('reading-instruction').textContent = passage.instruction;
+      document.getElementById('reading-title').textContent = passage.title;
+
+      const readingContentEl = document.getElementById('reading-content');
+      readingContentEl.innerHTML = passage.paragraphs
+        .map((p) => `<p class="indent-5">${p}</p>`)
+        .join('');
+
+      // Update Nomor Soal & Topik
+      document.getElementById('question-number-pill').textContent = `Soal ${q.number} / ${QUESTIONS.length}`;
+      document.getElementById('question-topic-tag').textContent = q.topic;
+      document.getElementById('question-text').textContent = q.question;
+
+      // Update Tombol Ragu-ragu
+      const flagBtn = document.getElementById('btn-flag-question');
+      const flagBtnText = document.getElementById('flag-btn-text');
+      const isFlagged = state.flagged[state.currentQuestionIndex];
+
+      if (isFlagged) {
+        flagBtn.className = 'inline-flex items-center gap-1.5 min-h-[40px] px-3.5 py-1.5 rounded-xl border text-xs sm:text-sm font-bold transition cursor-pointer no-select bg-amber-100 border-amber-400 text-amber-800';
+        flagBtnText.textContent = 'Ditandai Ragu';
+      } else {
+        flagBtn.className = 'inline-flex items-center gap-1.5 min-h-[40px] px-3.5 py-1.5 rounded-xl border text-xs sm:text-sm font-semibold transition cursor-pointer no-select bg-slate-50 border-slate-200 text-slate-600 hover:bg-amber-50 hover:border-amber-300 hover:text-amber-700';
+        flagBtnText.textContent = 'Tandai Ragu-ragu';
+      }
+
+      // Render 5 Pilihan Jawaban (A, B, C, D, E)
+      const optionsContainer = document.getElementById('options-container');
+      const selectedIdx = state.answers[state.currentQuestionIndex];
+
+      optionsContainer.innerHTML = q.options
+        .map((optText, idx) => {
+          const letter = OPTION_LETTERS[idx];
+          const isSelected = selectedIdx === idx;
+
+          const cardClass = isSelected
+            ? 'border-brand-600 bg-brand-50/80 ring-2 ring-brand-500/20'
+            : 'border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300';
+
+          const badgeClass = isSelected
+            ? 'bg-brand-600 text-white border-brand-600'
+            : 'bg-slate-100 text-slate-700 border-slate-200';
+
+          const textClass = isSelected
+            ? 'text-brand-950 font-semibold'
+            : 'text-slate-700 font-medium';
+
+          return `
+            <button
+              type="button"
+              data-option-index="${idx}"
+              role="radio"
+              aria-checked="${isSelected}"
+              class="option-btn w-full text-left min-h-[54px] p-3.5 sm:p-4 rounded-2xl border transition flex items-start gap-3.5 cursor-pointer no-select ${cardClass}"
+            >
+              <span class="w-8 h-8 rounded-xl border flex items-center justify-center text-sm font-extrabold shrink-0 mt-0.5 transition ${badgeClass}">
+                ${letter}
+              </span>
+              <span class="text-sm sm:text-[15px] leading-relaxed pt-1 ${textClass}">
+                ${optText}
+              </span>
+            </button>
+          `;
+        })
+        .join('');
+
+      // Pasang event listener untuk setiap tombol opsi
+      optionsContainer.querySelectorAll('.option-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const chosenIdx = Number(btn.getAttribute('data-option-index'));
+          state.answers[state.currentQuestionIndex] = chosenIdx;
+          renderQuestion();
+          renderNavigators();
+        });
+      });
+
+      // Update tombol Prev / Next Desktop & Mobile
+      const isFirst = state.currentQuestionIndex === 0;
+      const isLast = state.currentQuestionIndex === QUESTIONS.length - 1;
+
+      document.getElementById('btn-prev-desktop').disabled = isFirst;
+      document.getElementById('btn-prev-mobile').disabled = isFirst;
+
+      document.getElementById('btn-next-desktop-label').textContent = isLast ? 'Selesai & Kumpulkan' : 'Selanjutnya';
+      document.getElementById('btn-next-mobile-label').textContent = isLast ? 'Selesai' : 'Next';
+      document.getElementById('mobile-nav-btn-text').textContent = `Soal ${q.number}/${QUESTIONS.length}`;
+    }
+
+    /**
+     * RENDER QUESTION NAVIGATOR (DESKTOP SIDEBAR & MOBILE DRAWER)
+     */
+    function buildNavigatorHTML() {
+      const lesson1Questions = QUESTIONS.filter((q) => q.lessonNumber === 1);
+      const lesson2Questions = QUESTIONS.filter((q) => q.lessonNumber === 2);
+
+      const renderButtons = (list) =>
+        list
+          .map((q) => {
+            const idx = q.number - 1;
+            const isCurrent = idx === state.currentQuestionIndex;
+            const isAnswered = state.answers[idx] !== null;
+            const isFlagged = state.flagged[idx];
+
+            let btnStyle = 'bg-slate-100 border-slate-300 text-slate-700 hover:bg-slate-200';
+            if (isCurrent) {
+              btnStyle = 'bg-brand-600 border-brand-700 text-white ring-2 ring-brand-500/30';
+            } else if (isFlagged) {
+              btnStyle = 'bg-amber-400 border-amber-500 text-slate-950';
+            } else if (isAnswered) {
+              btnStyle = 'bg-emerald-500 border-emerald-600 text-white';
+            }
+
+            return `
+              <button
+                type="button"
+                data-nav-index="${idx}"
+                class="nav-item-btn min-h-[42px] rounded-xl border font-bold text-xs sm:text-sm flex items-center justify-center transition cursor-pointer no-select ${btnStyle}"
+              >
+                ${q.number}
+              </button>
+            `;
+          })
+          .join('');
+
+      return `
+        <div class="space-y-2">
+          <div class="text-xs font-bold text-brand-700 uppercase tracking-wider">
+            Lesson 1: Analytical Exposition (1&ndash;10)
+          </div>
+          <div class="grid grid-cols-5 gap-2">
+            ${renderButtons(lesson1Questions)}
+          </div>
+        </div>
+        <div class="space-y-2">
+          <div class="text-xs font-bold text-purple-700 uppercase tracking-wider">
+            Lesson 2: Fantasy Story (11&ndash;20)
+          </div>
+          <div class="grid grid-cols-5 gap-2">
+            ${renderButtons(lesson2Questions)}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderNavigators() {
+      const answeredCount = state.answers.filter((a) => a !== null).length;
+      document.getElementById('nav-progress-desktop').textContent = `${answeredCount} / ${QUESTIONS.length} Terjawab`;
+      document.getElementById('nav-progress-mobile').textContent = `${answeredCount} dari ${QUESTIONS.length} soal terjawab`;
+
+      const navHTML = buildNavigatorHTML();
+      const desktopContainer = document.getElementById('navigator-desktop-content');
+      const mobileContainer = document.getElementById('navigator-mobile-content');
+
+      desktopContainer.innerHTML = navHTML;
+      mobileContainer.innerHTML = navHTML;
+
+      // Event klik pada tombol nomor di desktop maupun mobile
+      document.querySelectorAll('.nav-item-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const targetIdx = Number(btn.getAttribute('data-nav-index'));
+          state.currentQuestionIndex = targetIdx;
+          renderQuestion();
+          renderNavigators();
+          document.getElementById('mobile-nav-modal').classList.add('hidden');
+        });
+      });
+    }
+
+    /**
+     * TOMBOL INTERAKSI RUANG UJIAN
+     */
+    // Lipat / Tampilkan Teks Bacaan
+    document.getElementById('btn-toggle-passage').addEventListener('click', () => {
+      state.passageCollapsed = !state.passageCollapsed;
+      const wrapper = document.getElementById('reading-body-wrapper');
+      const label = document.getElementById('toggle-passage-label');
+      const icon = document.getElementById('toggle-passage-icon');
+
+      if (state.passageCollapsed) {
+        wrapper.classList.add('hidden');
+        label.textContent = 'Tampilkan Teks';
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        wrapper.classList.remove('hidden');
+        label.textContent = 'Lipat Teks';
+        icon.style.transform = 'rotate(0deg)';
+      }
+    });
+
+    // Tandai Ragu-ragu
+    document.getElementById('btn-flag-question').addEventListener('click', () => {
+      const idx = state.currentQuestionIndex;
+      state.flagged[idx] = !state.flagged[idx];
+      renderQuestion();
+      renderNavigators();
+    });
+
+    // Navigasi Sebelumnya
+    function goPrevQuestion() {
+      if (state.currentQuestionIndex > 0) {
+        state.currentQuestionIndex -= 1;
+        renderQuestion();
+        renderNavigators();
+      }
+    }
+
+    // Navigasi Selanjutnya / Buka Dialog Submit di soal terakhir
+    function goNextQuestion() {
+      if (state.currentQuestionIndex < QUESTIONS.length - 1) {
+        state.currentQuestionIndex += 1;
+        renderQuestion();
+        renderNavigators();
+      } else {
+        openConfirmSubmitModal();
+      }
+    }
+
+    document.getElementById('btn-prev-desktop').addEventListener('click', goPrevQuestion);
+    document.getElementById('btn-prev-mobile').addEventListener('click', goPrevQuestion);
+    document.getElementById('btn-next-desktop').addEventListener('click', goNextQuestion);
+    document.getElementById('btn-next-mobile').addEventListener('click', goNextQuestion);
+
+    // Modal Question Navigator Mobile
+    const mobileNavModal = document.getElementById('mobile-nav-modal');
+    document.getElementById('btn-open-nav-mobile').addEventListener('click', () => {
+      renderNavigators();
+      mobileNavModal.classList.remove('hidden');
+    });
+    document.getElementById('btn-close-nav-mobile').addEventListener('click', () => {
+      mobileNavModal.classList.add('hidden');
+    });
+    mobileNavModal.addEventListener('click', (e) => {
+      if (e.target === mobileNavModal) {
+        mobileNavModal.classList.add('hidden');
+      }
+    });
+
+    // Modal Konfirmasi Pengumpulan Ujian
+    const confirmSubmitModal = document.getElementById('confirm-submit-modal');
+
+    function openConfirmSubmitModal() {
+      mobileNavModal.classList.add('hidden');
+      const answeredCount = state.answers.filter((a) => a !== null).length;
+      const unansweredCount = QUESTIONS.length - answeredCount;
+      const flaggedCount = state.flagged.filter(Boolean).length;
+
+      let summaryMsg = `Kamu telah menjawab ${answeredCount} dari ${QUESTIONS.length} soal.`;
+      if (unansweredCount > 0) {
+        summaryMsg += ` Masih ada ${unansweredCount} soal yang belum dijawab.`;
+      }
+      if (flaggedCount > 0) {
+        summaryMsg += ` Terdapat ${flaggedCount} soal yang ditandai ragu-ragu.`;
+      }
+
+      document.getElementById('confirm-submit-summary').textContent = summaryMsg;
+      confirmSubmitModal.classList.remove('hidden');
+    }
+
+    document.getElementById('btn-submit-desktop').addEventListener('click', openConfirmSubmitModal);
+    document.getElementById('btn-submit-mobile').addEventListener('click', openConfirmSubmitModal);
+
+    document.getElementById('btn-cancel-submit').addEventListener('click', () => {
+      confirmSubmitModal.classList.add('hidden');
+    });
+
+    document.getElementById('btn-confirm-submit').addEventListener('click', () => {
+      confirmSubmitModal.classList.add('hidden');
+      submitExam('Selesai Normal');
+    });
+
+    /**
+     * 3. SISTEM CHEATING DETECTOR (3X PERINGATAN -> AUTO-SUBMIT)
+     */
+    const cheatingModal = document.getElementById('cheating-modal');
+    const cheatingWarningText = document.getElementById('cheating-warning-text');
+    const cheatingDetailText = document.getElementById('cheating-detail-text');
+
+    function updateViolationBadge() {
+      const badge = document.getElementById('violation-badge');
+      const text = document.getElementById('violation-counter-text');
+      text.textContent = `${state.violationCount}/3`;
+
+      if (state.violationCount > 0) {
+        badge.classList.remove('bg-slate-100', 'border-slate-200', 'text-slate-700');
+        badge.classList.add('bg-rose-100', 'border-rose-300', 'text-rose-800');
+      } else {
+        badge.classList.add('bg-slate-100', 'border-slate-200', 'text-slate-700');
+        badge.classList.remove('bg-rose-100', 'border-rose-300', 'text-rose-800');
+      }
+    }
+
+    function registerViolation(reasonLabel) {
+      if (!state.isExamActive || state.isSubmitted) return;
+
+      // Debounce 900ms agar satu peristiwa tidak terhitung ganda oleh beberapa event browser
+      const now = Date.now();
+      if (now - state.lastViolationTimestamp < 900) return;
+      state.lastViolationTimestamp = now;
+
+      state.violationCount += 1;
+      const currentQNum = QUESTIONS[state.currentQuestionIndex].number;
+      const logEntry = `#${state.violationCount} [${getWibTimeString()}] ${reasonLabel} (pada Soal No. ${currentQNum})`;
+      state.cheatLogs.push(logEntry);
+
+      updateViolationBadge();
+
+      if (state.violationCount >= 3) {
+        cheatingModal.classList.add('hidden');
+        const banner = document.getElementById('autosubmit-banner');
+        banner.classList.remove('hidden');
+
+        setTimeout(() => {
+          banner.classList.add('hidden');
+        }, 4500);
+
+        submitExam('Auto-Submit (Pelanggaran 3x)');
+        return;
+      }
+
+      // Tampilkan modal peringatan pelanggaran ke-1 atau ke-2
+      cheatingWarningText.innerHTML =
+        `&#9888;&#65039; Peringatan ke-${state.violationCount} dari 3: kamu terdeteksi keluar dari mode layar penuh. Jangan membuka tab atau aplikasi lain.<br />` +
+        `Jika mencapai 3x, ujian otomatis dikumpulkan.`;
+      cheatingDetailText.textContent = `Catatan Sistem: ${logEntry}`;
+      cheatingModal.classList.remove('hidden');
+    }
+
+    // Event 1: Keluar dari mode layar penuh (Android / Desktop)
+    function handleFullscreenChange() {
+      if (!state.isExamActive || state.isSubmitted) return;
+      if (isFullscreenSupported() && !isCurrentlyFullscreen()) {
+        registerViolation('Keluar dari mode layar penuh (Fullscreen)');
+      }
+    }
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+
+    // Event 2: Berpindah tab browser atau meminimalkan browser (Android & iPhone iOS)
+    document.addEventListener('visibilitychange', () => {
+      if (!state.isExamActive || state.isSubmitted) return;
+      if (document.hidden) {
+        registerViolation('Membuka tab baru atau beralih ke aplikasi lain');
+      }
+    });
+
+    // Event 3: Kehilangan fokus jendela (Split screen / floating app)
+    window.addEventListener('blur', () => {
+      if (!state.isExamActive || state.isSubmitted) return;
+      setTimeout(() => {
+        if (state.isExamActive && !state.isSubmitted && !document.hasFocus()) {
+          registerViolation('Jendela ujian kehilangan fokus (membuka aplikasi lain)');
+        }
+      }, 150);
+    });
+
+    // Tombol kembali ke layar penuh & lanjutkan ujian
+    document.getElementById('btn-resume-fullscreen').addEventListener('click', async () => {
+      state.lastViolationTimestamp = Date.now();
+      await enterFullscreenSafe();
+      cheatingModal.classList.add('hidden');
+      state.lastViolationTimestamp = Date.now();
+    });
+
+    /**
+     * 4. PENGUMPULAN UJIAN, PERHITUNGAN SKOR, & PENGIRIMAN KE GOOGLE APPS SCRIPT
+     */
+    function submitExam(statusPengumpulan) {
+      if (state.isSubmitted) return;
+      state.isSubmitted = true;
+      state.isExamActive = false;
+
+      clearInterval(state.timerInterval);
+      cheatingModal.classList.add('hidden');
+      confirmSubmitModal.classList.add('hidden');
+      mobileNavModal.classList.add('hidden');
+
+      exitFullscreenSafe();
+
+      // Hitung skor dan rincian per Lesson
+      let correctCount = 0;
+      let lesson1Correct = 0;
+      let lesson2Correct = 0;
+      const detailParts = [];
+
+      QUESTIONS.forEach((q, idx) => {
+        const userAnsIdx = state.answers[idx];
+        const isCorrect = userAnsIdx === q.answerIndex;
+        const userLetter = userAnsIdx !== null ? OPTION_LETTERS[userAnsIdx] : '-';
+        const keyLetter = OPTION_LETTERS[q.answerIndex];
+
+        if (isCorrect) {
+          correctCount += 1;
+          if (q.lessonNumber === 1) lesson1Correct += 1;
+          if (q.lessonNumber === 2) lesson2Correct += 1;
+        }
+
+        detailParts.push(`${q.number}:${userLetter}(${isCorrect ? 'B' : 'S/' + keyLetter})`);
+      });
+
+      const wrongCount = QUESTIONS.length - correctCount;
+      const finalScore = Math.round((correctCount / QUESTIONS.length) * 100);
+      const lesson1Score = lesson1Correct * 10; // 10 soal x 10 = 100
+      const lesson2Score = lesson2Correct * 10; // 10 soal x 10 = 100
+      const correctAnswersFormatted = `${correctCount}/${QUESTIONS.length}`;
+      const cheatNotesFormatted = state.cheatLogs.length > 0
+        ? state.cheatLogs.join(' | ')
+        : 'Tidak ada pelanggaran';
+      const detailJawabanText = detailParts.join(', ');
+
+      // Render Halaman Hasil
+      document.getElementById('result-status-badge').textContent = statusPengumpulan;
+      document.getElementById('result-student-identity').textContent =
+        `${state.student.nama} • NIS: ${state.student.nis} • Kelas: ${state.student.kelas}`;
+      document.getElementById('result-final-score').textContent = finalScore;
+      document.getElementById('res-correct').textContent = correctAnswersFormatted;
+      document.getElementById('res-wrong').textContent = `${wrongCount}/${QUESTIONS.length}`;
+      document.getElementById('res-lesson1').textContent = `${lesson1Score}`;
+      document.getElementById('res-lesson2').textContent = `${lesson2Score}`;
+      document.getElementById('res-violations').textContent = `${state.violationCount} dari 3 Pelanggaran`;
+      document.getElementById('res-cheat-notes').textContent = cheatNotesFormatted;
+
+      renderAnswerReview();
+      switchScreen('result');
+
+      // Susun parameter form-urlencoded lengkap dengan alias nama kolom spreadsheet
+      state.lastPayloadParams = {
+        Nama: state.student.nama,
+        nama: state.student.nama,
+        NIS: state.student.nis,
+        nis: state.student.nis,
+        Kelas: state.student.kelas,
+        kelas: state.student.kelas,
+        Skor: String(finalScore),
+        skor: String(finalScore),
+        score: String(finalScore),
+        'Correct answers': correctAnswersFormatted,
+        correct_answers: correctAnswersFormatted,
+        correctAnswers: correctAnswersFormatted,
+        'Cheat Warnings': String(state.violationCount),
+        cheat_warnings: String(state.violationCount),
+        cheatWarnings: String(state.violationCount),
+        'Cheat Notes': cheatNotesFormatted,
+        cheat_notes: cheatNotesFormatted,
+        cheatNotes: cheatNotesFormatted,
+        Status: statusPengumpulan,
+        status: statusPengumpulan,
+        submitReason: statusPengumpulan,
+        Detail: detailJawabanText,
+        detail: detailJawabanText,
+        answers: detailJawabanText,
+        'Detail Jawaban': detailJawabanText,
+        detail_jawaban: detailJawabanText
+      };
+
+      sendResultsToGoogleScript(state.lastPayloadParams);
+    }
+
+    /**
+     * MENGIRIM HASIL KE GOOGLE APPS SCRIPT MENGGUNAKAN URLSearchParams (FORM-URLENCODED)
+     */
+    async function sendResultsToGoogleScript(payloadObj) {
+      const statusBox = document.getElementById('sync-status-box');
+      const spinner = document.getElementById('sync-spinner');
+      const checkIcon = document.getElementById('sync-check-icon');
+      const titleEl = document.getElementById('sync-status-title');
+      const descEl = document.getElementById('sync-status-desc');
+      const retryBtn = document.getElementById('btn-retry-sync');
+
+      // Tampilan sedang mengirim
+      statusBox.className = 'rounded-2xl p-4 border flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-indigo-50 border-indigo-200 text-indigo-900';
+      spinner.classList.remove('hidden');
+      checkIcon.classList.add('hidden');
+      retryBtn.classList.add('hidden');
+      titleEl.textContent = 'Mengirimkan data ke Google Spreadsheet...';
+      descEl.textContent = 'Menyinkronkan Nama, NIS, Kelas, Skor, Correct answers, Cheat Warnings, dan Cheat Notes.';
+
+      try {
+        const formBody = new URLSearchParams();
+        Object.keys(payloadObj).forEach((key) => {
+          formBody.append(key, payloadObj[key]);
+        });
+
+        await fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+          },
+          body: formBody.toString()
+        });
+
+        // Sukses dikirim
+        statusBox.className = 'rounded-2xl p-4 border flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-emerald-50 border-emerald-200 text-emerald-900';
+        spinner.classList.add('hidden');
+        checkIcon.classList.remove('hidden');
+        retryBtn.classList.remove('hidden');
+        titleEl.textContent = 'Hasil ujian berhasil dikirim ke Google Spreadsheet!';
+        descEl.textContent = `Terkirim pada ${getWibTimeString()} • Skor: ${payloadObj.Skor} | Correct: ${payloadObj['Correct answers']} | Cheat Warnings: ${payloadObj['Cheat Warnings']}`;
+      } catch (err) {
+        statusBox.className = 'rounded-2xl p-4 border flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-rose-50 border-rose-200 text-rose-900';
+        spinner.classList.add('hidden');
+        checkIcon.classList.add('hidden');
+        retryBtn.classList.remove('hidden');
+        titleEl.textContent = 'Gagal terhubung ke server Google Spreadsheet.';
+        descEl.textContent = 'Periksa koneksi internet Anda lalu tekan tombol Kirim Ulang ke Spreadsheet.';
+      }
+    }
+
+    document.getElementById('btn-retry-sync').addEventListener('click', () => {
+      if (state.lastPayloadParams) {
+        sendResultsToGoogleScript(state.lastPayloadParams);
+      }
+    });
+
+    /**
+     * RENDER KUNCI JAWABAN & PEMBAHASAN
+     */
+    function renderAnswerReview() {
+      const reviewList = document.getElementById('review-list');
+      reviewList.innerHTML = QUESTIONS.map((q, idx) => {
+        const userIdx = state.answers[idx];
+        const isCorrect = userIdx === q.answerIndex;
+        const userText = userIdx !== null
+          ? `${OPTION_LETTERS[userIdx]}. ${q.options[userIdx]}`
+          : 'Tidak dijawab';
+        const correctText = `${OPTION_LETTERS[q.answerIndex]}. ${q.options[q.answerIndex]}`;
+
+        const badgeStyle = isCorrect
+          ? 'bg-emerald-100 text-emerald-800 border-emerald-200'
+          : 'bg-rose-100 text-rose-800 border-rose-200';
+
+        return `
+          <div class="bg-white rounded-3xl border border-slate-200/90 p-5 space-y-3 shadow-xs">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div class="flex items-center gap-2">
+                <span class="px-3 py-1 rounded-xl bg-slate-900 text-white text-xs font-extrabold">No. ${q.number}</span>
+                <span class="text-xs font-semibold text-slate-500">${q.topic}</span>
+              </div>
+              <span class="px-3 py-1 rounded-xl border text-xs font-extrabold ${badgeStyle}">
+                ${isCorrect ? 'Benar (+5)' : 'Salah (0)'}
+              </span>
+            </div>
+
+            <p class="text-sm sm:text-base font-bold text-slate-900 leading-relaxed">${q.question}</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs sm:text-sm">
+              <div class="p-3 rounded-2xl border ${isCorrect ? 'bg-emerald-50/70 border-emerald-200 text-emerald-900' : 'bg-rose-50/70 border-rose-200 text-rose-900'}">
+                <span class="block text-[11px] font-bold uppercase opacity-75">Jawaban Kamu:</span>
+                <span class="font-semibold mt-0.5 block">${userText}</span>
+              </div>
+              <div class="p-3 rounded-2xl border bg-indigo-50/70 border-indigo-200 text-indigo-950">
+                <span class="block text-[11px] font-bold uppercase text-indigo-600">Kunci Jawaban:</span>
+                <span class="font-semibold mt-0.5 block">${correctText}</span>
+              </div>
+            </div>
+
+            <div class="text-xs sm:text-sm text-slate-600 bg-slate-50 rounded-2xl p-3.5 border border-slate-100 leading-relaxed">
+              <strong class="text-slate-800">Pembahasan:</strong> ${q.explanation}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    const reviewContainer = document.getElementById('review-container');
+    const btnToggleReview = document.getElementById('btn-toggle-review');
+
+    btnToggleReview.addEventListener('click', () => {
+      const isHidden = reviewContainer.classList.contains('hidden');
+      if (isHidden) {
+        reviewContainer.classList.remove('hidden');
+        btnToggleReview.textContent = 'Sembunyikan Kunci Jawaban & Pembahasan';
+        reviewContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        reviewContainer.classList.add('hidden');
+        btnToggleReview.textContent = 'Lihat Kunci Jawaban & Pembahasan';
+      }
+    });
+
+    document.getElementById('btn-restart-app').addEventListener('click', () => {
+      reviewContainer.classList.add('hidden');
+      btnToggleReview.textContent = 'Lihat Kunci Jawaban & Pembahasan';
+      checkboxAgree.checked = false;
+      switchScreen('login');
+    });
+  </script>
+</body>
+</html>
